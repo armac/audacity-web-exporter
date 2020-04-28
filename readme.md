@@ -34,3 +34,4 @@ src/audacity_projects
 
 Put all the src directory content to a static web server and your projects are online.
 
+![screenshot](scrsh.jpg)
