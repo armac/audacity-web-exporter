@@ -1,10 +1,14 @@
 # A simple tool to publish your audacity project online as static web content.
 
-Front end base on: https://github.com/naomiaro/waveform-playlist
+Front end based on: https://github.com/naomiaro/waveform-playlist
     
 This tool allow you to publish your audactity project as html+js+css+ogg static files.
 Save your projects as a compressed projects.
 And then run this tool.
+
+```
+python ./export --projects-source-directory <path/to/audacity/projects>
+```
 
 Source directory example:
 
@@ -32,6 +36,6 @@ src/audacity_projects
 │   ├── Piste audio-9.ogg
 ```
 
-Put all the src directory content to a static web server and your projects are online.
+Put all the *dist* directory content to a static web server and your projects are online.
 
 ![screenshot](scrsh.jpg)
