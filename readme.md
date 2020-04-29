@@ -1,6 +1,6 @@
 # A simple tool to publish your audacity project online as static web content.
 
-Front end base on: https://github.com/naomiaro/waveform-playlist
+Front end based on: https://github.com/naomiaro/waveform-playlist
     
 This tool allow you to publish your audactity project as html+js+css+ogg static files.
 Save your projects as a compressed projects.
