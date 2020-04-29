@@ -1,4 +1,5 @@
 import os
+import shutil
 import json
 import argparse
 import logging
@@ -11,11 +12,10 @@ log = logger.debug
 
 
 def bootstrap():
-    try:
-        os.mkdir('dist')
-    except FileExistsError as e:
-        log("Directory 'dist' exists")
-
+    shutil.rmtree('dist')
+    shutil.copytree('src', 'dist')
+    os.mkdir('dist/audacity_projects')
+        
 
 def export_projects(input_directory):
     all_projects = []
@@ -23,9 +23,14 @@ def export_projects(input_directory):
         if elem.endswith('.aup'):
             log("Found audactity project '%s'" % elem)
             json_config = []
-            
-            tree = ET.parse('%s/%s' % (input_directory, elem))
+            aup_file = '%s/%s' % (input_directory, elem)
+            shutil.copy(aup_file, "dist/audacity_projects")
+            tree = ET.parse(aup_file)
             data_dir = elem.replace('.aup', '_data')
+            shutil.copytree(
+                "%s/%s" % (input_directory, data_dir),
+                'dist/audacity_projects/%s' % data_dir
+            )
             all_projects.append({
                 "name": elem.replace('.aup', ''),
                 "link": "#"+elem.replace('.aup', '')
@@ -44,10 +49,10 @@ def export_projects(input_directory):
                     "muted": mute == "1",
                     "start": float(offset)
                 })
-            ouput_file = "src/audacity_projects/%s" % elem.replace('.aup', '.json')
+            ouput_file = "dist/audacity_projects/%s" % elem.replace('.aup', '.json')
             with open(ouput_file, 'w') as f:
                 json.dump(json_config, f, indent=True)
-    with open("src/all_projects.json", 'w') as f:
+    with open("dist/all_projects.json", 'w') as f:
         json.dump(all_projects, f, indent=True)                
     
 if __name__ == "__main__":
@@ -61,7 +66,7 @@ And then run this tool.
 
 Source directory example:
 
-src/audacity_projects
+audacity_projects
 ├── drum_4_5.aup
 ├── drum_4_5_data
 │   ├── drum_4_5.ogg
@@ -84,11 +89,11 @@ src/audacity_projects
 │   ├── Piste audio-9.ogg
 
 
-Put all the src directory content to a static web server and your projects are online.
+Put all the *dist* directory content to a static web server and your projects are online.
                     """)
     parser.add_argument(
         '-s', "--projects-source-directory", type=str,
-        default="src/audacity_projects",
+        default="./audacity_projects",
         help="the directory where your audacity light project are stored")
     args = parser.parse_args()
     log(args)

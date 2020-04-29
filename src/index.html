@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/main.css">
   </head>
-  <body>
+  <body style="padding:5px;">
     <nav class="navbar navbar-default">
       <div class="navbar-header">
         <a class="navbar-brand" href="#">Audacity exports</a>
@@ -22,6 +22,12 @@
         <span class="btn-play btn btn-success"><i class="fa fa-play"></i></span>
         <span class="btn-stop btn btn-danger"><i class="fa fa-stop"></i></span>
       </div>
+      
+      <div class="" style="float:right;width:calc(100% - 120px);padding-top:3px;">
+        <i style="float:left;margin-top:3px;" class="fa fa-spinner fa-spin" id="status-is-loading"></i>
+        <i style="float:left;margin-top:3px;display:none;" class="fa fa-check text-success" id="status-is-loaded" ></i>
+        <div style="margin-left:20px;" class="loading-data"></div>
+      </div>      
     </div>
     
     <div id="myplaylist" style=""></div>

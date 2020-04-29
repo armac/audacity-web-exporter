@@ -288,9 +288,9 @@ function displaySoundStatus(status) {
   $(".sound-status").html(status);
 }
 
-function displayLoadingData(data) {
-  var info = $("<div/>").append(data);
-  $(".loading-data").append(info);
+function displayLoadingData(data, state) {
+    //var info = $("<div/>").append(data);        
+    $(".loading-data").html(data);
 }
 
 function displayDownloadLink(link) {
@@ -340,12 +340,12 @@ ee.on("audiorequeststatechange", function(state, src) {
     name = src.name;
   }
 
-  displayLoadingData("Track " + name + " is in state " + audioStates[state]);
+    displayLoadingData("Track " + name + " is in state " + audioStates[state], state);
 });
 
 ee.on("loadprogress", function(percent, src) {
   var name = src;
-
+  
   if (src instanceof File) {
     name = src.name;
   }
@@ -358,7 +358,9 @@ ee.on("audiosourcesloaded", function() {
 });
 
 ee.on("audiosourcesrendered", function() {
-  displayLoadingData("Tracks have been rendered");
+    displayLoadingData("Tracks have been rendered");
+    $("#status-is-loaded").show();
+    $("#status-is-loading").hide();
 });
 
 ee.on('audiorenderingfinished', function (type, data) {
