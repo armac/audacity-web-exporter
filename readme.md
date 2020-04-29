@@ -13,7 +13,7 @@ python ./export --projects-source-directory <path/to/audacity/projects>
 Source directory example:
 
 ```
-src/audacity_projects
+audacity_projects
 ├── drum_4_5.aup
 ├── drum_4_5_data
 │   ├── drum_4_5.ogg
