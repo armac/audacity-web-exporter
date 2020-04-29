@@ -6,6 +6,10 @@ This tool allow you to publish your audactity project as html+js+css+ogg static 
 Save your projects as a compressed projects.
 And then run this tool.
 
+```
+python ./export --projects-source-directory <path/to/audacity/projects>
+```
+
 Source directory example:
 
 ```
