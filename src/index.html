@@ -4,6 +4,11 @@
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
     <link rel="stylesheet" href="css/main.css">
+    <style>
+      .custom-text-success{
+          color: #20b723;
+      }
+    </style>
   </head>
   <body style="padding:5px;">
     <nav class="navbar navbar-default">
@@ -22,17 +27,24 @@
         <span class="btn-play btn btn-success"><i class="fa fa-play"></i></span>
         <span class="btn-stop btn btn-danger"><i class="fa fa-stop"></i></span>
       </div>
+
+      <span onclick="download_current_project()" class="btn btn btn-primary" style="line-height:10px;">
+        <i class="fa fa-download"></i>&nbsp;Download audacity project
+      </span>
       
-      <div class="" style="float:right;width:calc(100% - 120px);padding-top:3px;">
+      <div class="" style="float:right;width:calc(100% - 330px);padding-top:3px;">
         <i style="float:left;margin-top:3px;" class="fa fa-spinner fa-spin" id="status-is-loading"></i>
-        <i style="float:left;margin-top:3px;display:none;" class="fa fa-check text-success" id="status-is-loaded" ></i>
+        <i style="float:left;margin-top:3px;display:none;" class="fa fa-check custom-text-success" id="status-is-loaded" ></i>
         <div style="margin-left:20px;" class="loading-data"></div>
       </div>      
     </div>
     
     <div id="myplaylist" style=""></div>
     
-    <script src="//code.jquery.com/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/jszip.min.js"></script>
+    <script type="text/javascript" src="js/jszip-utils.min.js"></script>
+    <script type="text/javascript" src="js/FileSaver.js"></script>
     <script type="text/javascript" src="js/waveform-playlist.var.js"></script>
     <script type="text/javascript" src="js/main.js"></script>
     <script type="text/javascript" src="js/emitter.js"></script>

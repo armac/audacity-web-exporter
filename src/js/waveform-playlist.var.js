@@ -1930,12 +1930,17 @@ var WaveformPlaylist =
 	        _this2.adjustTrackPlayout();
 	        _this2.drawRequest();
 	      });
-	
-	      ee.on('mute', function (track) {
+
+          ee.on('download', function (track) {
+              console.log('download')
+	      });            
+
+            
+          ee.on('mute', function (track) {
 	        _this2.muteTrack(track);
 	        _this2.adjustTrackPlayout();
 	        _this2.drawRequest();
-	      });
+	      });            
 	
 	      ee.on('volumechange', function (volume, track) {
 	        track.setGainLevel(volume / 100);
@@ -5946,31 +5951,51 @@ var WaveformPlaylist =
 	      var muteClass = data.muted ? '.active' : '';
 	      var soloClass = data.soloed ? '.active' : '';
 	      var numChan = this.peaks.data.length;
-	
+
+            //console.log('data', data, this)
 	      return (0, _h2.default)('div.controls', {
 	        attributes: {
 	          style: 'height: ' + numChan * data.height + 'px; width: ' + data.controls.width + 'px; position: absolute; left: 0; z-index: 10;'
 	        }
-	      }, [(0, _h2.default)('header', [this.name]), (0, _h2.default)('div.btn-group', [(0, _h2.default)('span.btn.btn-default.btn-xs.btn-mute' + muteClass, {
-	        onclick: function onclick() {
-	          _this2.ee.emit('mute', _this2);
-	        }
-	      }, ['Mute']), (0, _h2.default)('span.btn.btn-default.btn-xs.btn-solo' + soloClass, {
-	        onclick: function onclick() {
-	          _this2.ee.emit('solo', _this2);
-	        }
-	      }, ['Solo'])]), (0, _h2.default)('label', [(0, _h2.default)('input.volume-slider', {
-	        attributes: {
-	          type: 'range',
-	          min: 0,
-	          max: 100,
-	          value: 100
-	        },
-	        hook: new _VolumeSliderHook2.default(this.gain),
-	        oninput: function oninput(e) {
-	          _this2.ee.emit('volumechange', e.target.value, _this2);
-	        }
-	      })])]);
+	      }, [
+              (0, _h2.default)('header', [
+                  (0, _h2.default)('a',{
+                      attributes:{
+                          href: this.src
+                      },
+                      style: {
+                          color: 'white'
+                      }
+                  },[this.name])
+              ]),
+              (0, _h2.default)('div.btn-group', [
+                  (0, _h2.default)(
+                      'span.btn.btn-default.btn-xs.btn-mute' + muteClass, {
+	                      onclick: function onclick() {
+	                          _this2.ee.emit('mute', _this2);
+	                      }
+	                  }, ['Mute']
+                  ),
+                  (0, _h2.default)(
+                      'span.btn.btn-default.btn-xs.btn-solo' + soloClass, {
+	                      onclick: function onclick() {
+	                          _this2.ee.emit('solo', _this2);
+	                      }
+	                  }, ['Solo'])
+              ]),
+              (0, _h2.default)('label', [(0, _h2.default)('input.volume-slider', {
+	              attributes: {
+	                  type: 'range',
+	                  min: 0,
+	                  max: 100,
+	                  value: 100
+	              },
+	              hook: new _VolumeSliderHook2.default(this.gain),
+	              oninput: function oninput(e) {
+	                  _this2.ee.emit('volumechange', e.target.value, _this2);
+	              }
+	          })])
+          ]);
 	    }
 	  }, {
 	    key: 'render',

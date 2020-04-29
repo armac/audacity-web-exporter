@@ -361,6 +361,7 @@ ee.on("audiosourcesrendered", function() {
     displayLoadingData("Tracks have been rendered");
     $("#status-is-loaded").show();
     $("#status-is-loading").hide();
+    $(".loading-data").addClass('custom-text-success')
 });
 
 ee.on('audiorenderingfinished', function (type, data) {
@@ -370,7 +371,7 @@ ee.on('audiorenderingfinished', function (type, data) {
     }
 
     downloadUrl = window.URL.createObjectURL(data);
-    displayDownloadLink(downloadUrl);
+      displayDownloadLink(downloadUrl);
   }
 });
 
