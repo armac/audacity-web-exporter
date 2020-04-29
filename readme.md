@@ -36,6 +36,6 @@ src/audacity_projects
 │   ├── Piste audio-9.ogg
 ```
 
-Put all the src directory content to a static web server and your projects are online.
+Put all the *dist* directory content to a static web server and your projects are online.
 
 ![screenshot](scrsh.jpg)
