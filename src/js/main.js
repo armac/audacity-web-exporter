@@ -27,6 +27,8 @@ if(location.hash != ""){
             // can do stuff with the playlist.
           });
     });
+}else{
+    $('.playlist-toolbar').hide()
 }
 
 $.get( "all_projects.json", function( data ) {
