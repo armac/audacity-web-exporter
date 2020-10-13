@@ -39,3 +39,4 @@ audacity_projects
 Put all the *dist* directory content to a static web server and your projects are online.
 
 ![screenshot](https://github.com/screwt/audacity-web-exporter/raw/master/scrsh_2.jpg)
+<img src="https://github.com/screwt/audacity-web-exporter/raw/master/scrsh_2.jpg">
