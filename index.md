@@ -1,37 +1,41 @@
-## Welcome to GitHub Pages
+# A simple tool to publish your audacity project online as static web content.
 
-You can use the [editor on GitHub](https://github.com/screwt/audacity-web-exporter/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+Front end based on: https://github.com/naomiaro/waveform-playlist
+    
+This tool allow you to publish your audactity project as html+js+css+ogg static files.
+Save your projects as a compressed projects.
+And then run this tool.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
-```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+```
+python ./export --projects-source-directory <path/to/audacity/projects>
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+Source directory example:
 
-### Jekyll Themes
+```
+audacity_projects
+├── drum_4_5.aup
+├── drum_4_5_data
+│   ├── drum_4_5.ogg
+│   ├── Piste audio.ogg
+│   └── Piste audio-2.ogg
+├── essai_base_roms.aup
+├── essai_base_roms_data
+│   ├── Piste audio.ogg
+│   ├── Piste audio-10.ogg
+│   ├── Piste audio-11.ogg
+│   ├── Piste audio-12.ogg
+│   ├── Piste audio-13.ogg
+│   ├── Piste audio-2.ogg
+│   ├── Piste audio-3.ogg
+│   ├── Piste audio-4.ogg
+│   ├── Piste audio-5.ogg
+│   ├── Piste audio-6.ogg
+│   ├── Piste audio-7.ogg
+│   ├── Piste audio-8.ogg
+│   ├── Piste audio-9.ogg
+```
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/screwt/audacity-web-exporter/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+Put all the *dist* directory content to a static web server and your projects are online.
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+![screenshot](scrsh_2.jpg)
